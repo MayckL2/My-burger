@@ -1,13 +1,13 @@
 <main class="min-h-screen w-full container mx-auto p-4 flex flex-col gap-4">
-    
+
     <section *ngIf="showAlert && alertStatus" class="p-4 rounded-xl bg-sky-600 flex items-center gap-4">
         <img src="../../../assets/success.svg" alt="success">
-       
+
         <p class="text-xl font-bold">{{alertText}}</p>
     </section>
     <section *ngIf="showAlert && !alertStatus" class="p-4 rounded-xl bg-red-600 flex items-center gap-4">
         <img src="../../../assets/error.svg" alt="error">
-       
+
         <p class="text-xl font-bold">{{alertText}}</p>
     </section>
 
@@ -24,51 +24,65 @@
 
                 <mat-form-field class="w-full">
                     <mat-label>Preço</mat-label>
-                    <input name="price" placeholder="Ex: 12.99" maxlength="5" matInput ngModel required #price="ngModel" />
+                    <input name="price" placeholder="Ex: 12.99" maxlength="5" matInput ngModel required
+                        #price="ngModel" />
                 </mat-form-field>
             </div>
 
-            <div class="grid grid-cols-1 gap-4">
-                <mat-chip-listbox aria-label="carnes" class="w-full p-2 outline rounded-xl ">
-                    <mat-label class="ml-2 font-bold">Carnes</mat-label>
-                    <mat-chip-option *ngFor="let ing of carneList" (click)="choseIng(ing, 'carnes')">
-                        {{ing}}
-                    </mat-chip-option>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <mat-chip-listbox aria-label="carnes" class="w-full outline rounded-xl ">
+                    <mat-label class="ml-2 p-2 w-full font-bold border-b-2 border-amber-400">Carnes</mat-label>
+                    <div class="p-2">
+                        <mat-chip-option *ngFor="let ing of carneList" (click)="choseIng(ing, 'carnes')">
+                            {{ing}}
+                        </mat-chip-option>
+                    </div>
                 </mat-chip-listbox>
 
-                <mat-chip-listbox aria-label="molhos" class="w-full p-2 outline rounded-xl ">
-                    <mat-label class="ml-2 font-bold">Molhos</mat-label>
-                    <mat-chip-option *ngFor="let ing of molhoList" (click)="choseIng(ing, 'molhos')">
-                        {{ing}}
-                    </mat-chip-option>
+                <mat-chip-listbox aria-label="molhos" class="w-full outline rounded-xl ">
+                    <mat-label class="ml-2 p-2 w-full font-bold border-b-2 border-amber-400">Molhos</mat-label>
+                    <div class="p-2">
+                        <mat-chip-option *ngFor="let ing of molhoList" (click)="choseIng(ing, 'molhos')">
+                            {{ing}}
+                        </mat-chip-option>
+                    </div>
                 </mat-chip-listbox>
 
-                <mat-chip-listbox aria-label="paes" class="w-full p-2 outline rounded-xl ">
-                    <mat-label class="ml-2 font-bold">Paes</mat-label>
-                    <mat-chip-option *ngFor="let ing of paesList" (click)="choseIng(ing, 'paes')">
-                        {{ing}}
-                    </mat-chip-option>
+                <mat-chip-listbox aria-label="paes" class="w-full outline rounded-xl ">
+                    <mat-label class="ml-2 p-2 w-full font-bold border-b-2 border-amber-400">Paes</mat-label>
+                    <div class="p-2">
+                        <mat-chip-option *ngFor="let ing of paesList" (click)="choseIng(ing, 'paes')">
+                            {{ing}}
+                        </mat-chip-option>
+                    </div>
                 </mat-chip-listbox>
 
-                <mat-chip-listbox aria-label="acompanhamentos" class="w-full p-2 outline rounded-xl ">
-                    <mat-label class="ml-2 font-bold">Acompanhamentos</mat-label>
-                    <mat-chip-option *ngFor="let ing of acompanhamentoList" (click)="choseIng(ing, 'acompanhamentos')">
-                        {{ing}}
-                    </mat-chip-option>
+                <mat-chip-listbox aria-label="acompanhamentos" class="w-full outline rounded-xl ">
+                    <mat-label class="ml-2 p-2 w-full font-bold border-b-2 border-amber-400">Acompanhamentos</mat-label>
+                    <div class="p-2">
+                        <mat-chip-option *ngFor="let ing of acompanhamentoList"
+                            (click)="choseIng(ing, 'acompanhamentos')">
+                            {{ing}}
+                        </mat-chip-option>
+                    </div>
                 </mat-chip-listbox>
 
-                <mat-chip-listbox aria-label="salada" class="w-full p-2 outline rounded-xl ">
-                    <mat-label class="ml-2 font-bold">Saladas</mat-label>
-                    <mat-chip-option *ngFor="let ing of saladaList" (click)="choseIng(ing, 'saladas')">
-                        {{ing}}
-                    </mat-chip-option>
+                <mat-chip-listbox aria-label="salada" class="w-full outline rounded-xl ">
+                    <mat-label class="ml-2 p-2 w-full font-bold border-b-2 border-amber-400">Saladas</mat-label>
+                    <div class="p-2">
+                        <mat-chip-option *ngFor="let ing of saladaList" (click)="choseIng(ing, 'saladas')">
+                            {{ing}}
+                        </mat-chip-option>
+                    </div>
                 </mat-chip-listbox>
 
-                <mat-chip-listbox aria-label="queijos" class="w-full p-2 outline rounded-xl ">
-                    <mat-label class="ml-2 font-bold">Queijos</mat-label>
-                    <mat-chip-option *ngFor="let ing of queijoList" (click)="choseIng(ing, 'queijos')">
-                        {{ing}}
-                    </mat-chip-option>
+                <mat-chip-listbox aria-label="queijos" class="w-full outline rounded-xl ">
+                    <mat-label class="ml-2 p-2 w-full font-bold border-b-2 border-amber-400">Queijos</mat-label>
+                    <div class="p-2">
+                        <mat-chip-option *ngFor="let ing of queijoList" (click)="choseIng(ing, 'queijos')">
+                            {{ing}}
+                        </mat-chip-option>
+                    </div>
                 </mat-chip-listbox>
             </div>
 

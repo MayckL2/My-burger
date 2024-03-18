@@ -1,7 +1,7 @@
 <div class="p-4 flex flex-col gap-2 bg-slate-800 rounded-xl h-fit transition-all" >
     <div class="relative">
       <img class="bg-slate-400 rounded h-40 w-full" [src]="img" alt="burger">
-      <p class="absolute bottom-2 left-4 text-slate-950 font-bold capitalize">{{name}}</p>
+      <p class="absolute bottom-2 left-4 text-slate-100 font-bold capitalize">{{name}}</p>
     </div>
     <span class="self-end">R$ {{price.toFixed(2)}}</span>
     <button mat-flat-button color="primary" routerLink="burguer"

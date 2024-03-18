@@ -7,47 +7,52 @@
       <button class="absolute top-4 right-2"><img class="w-6" src="../../../assets/search.svg" alt="search" /></button>
     </form>
 
-    <mat-chip-listbox aria-label="carnes" class="w-full p-2 outline rounded-xl ">
+    <mat-chip-listbox *ngIf="carneList.length > 0" aria-label="carnes" class="w-full p-2 outline rounded-xl ">
       <mat-label class="ml-2 font-bold">Carnes</mat-label>
       <mat-chip-option *ngFor="let ing of carneList" (click)="choseIng(ing)">
         {{ing}}
       </mat-chip-option>
     </mat-chip-listbox>
 
-    <mat-chip-listbox aria-label="molhos" class="w-full p-2 outline rounded-xl ">
+    <mat-chip-listbox *ngIf="carneList.length > 0" aria-label="molhos" class="w-full p-2 outline rounded-xl ">
       <mat-label class="ml-2 font-bold">Molhos</mat-label>
       <mat-chip-option *ngFor="let ing of molhoList" (click)="choseIng(ing)">
         {{ing}}
       </mat-chip-option>
     </mat-chip-listbox>
 
-    <mat-chip-listbox aria-label="paes" class="w-full p-2 outline rounded-xl ">
+    <mat-chip-listbox *ngIf="carneList.length > 0" aria-label="paes" class="w-full p-2 outline rounded-xl ">
       <mat-label class="ml-2 font-bold">Paes</mat-label>
       <mat-chip-option *ngFor="let ing of paesList" (click)="choseIng(ing)">
         {{ing}}
       </mat-chip-option>
     </mat-chip-listbox>
 
-    <mat-chip-listbox aria-label="acompanhamentos" class="w-full p-2 outline rounded-xl ">
+    <mat-chip-listbox *ngIf="carneList.length > 0" aria-label="acompanhamentos" class="w-full p-2 outline rounded-xl ">
       <mat-label class="ml-2 font-bold">Acompanhamentos</mat-label>
       <mat-chip-option *ngFor="let ing of acompanhamentoList" (click)="choseIng(ing)">
         {{ing}}
       </mat-chip-option>
     </mat-chip-listbox>
 
-    <mat-chip-listbox aria-label="salada" class="w-full p-2 outline rounded-xl ">
+    <mat-chip-listbox *ngIf="carneList.length > 0" aria-label="salada" class="w-full p-2 outline rounded-xl ">
       <mat-label class="ml-2 font-bold">Saladas</mat-label>
       <mat-chip-option *ngFor="let ing of saladaList" (click)="choseIng(ing)">
         {{ing}}
       </mat-chip-option>
     </mat-chip-listbox>
 
-    <mat-chip-listbox aria-label="queijos" class="w-full p-2 outline rounded-xl ">
+    <mat-chip-listbox *ngIf="carneList.length > 0" aria-label="queijos" class="w-full p-2 outline rounded-xl ">
       <mat-label class="ml-2 font-bold">Queijos</mat-label>
       <mat-chip-option *ngFor="let ing of queijoList" (click)="choseIng(ing)">
         {{ing}}
       </mat-chip-option>
     </mat-chip-listbox>
+
+    <ngx-skeleton-loader *ngIf="carneList.length == 0" [theme]="{height: '10rem', width: '100%'}" animation="pulse" />
+    <ngx-skeleton-loader *ngIf="carneList.length == 0" [theme]="{height: '10rem', width: '100%'}" animation="pulse" />
+    <ngx-skeleton-loader *ngIf="carneList.length == 0" [theme]="{height: '10rem', width: '100%'}" animation="pulse" />
+    <ngx-skeleton-loader *ngIf="carneList.length == 0" [theme]="{height: '10rem', width: '100%'}" animation="pulse" />
   </aside>
 
   <section
