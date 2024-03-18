@@ -1,0 +1,15 @@
+<div class="p-4 flex flex-col gap-2 bg-slate-800 rounded-xl h-fit transition-all" >
+    <div class="relative">
+      <img class="bg-slate-400 rounded h-40 w-full" [src]="img" alt="burger">
+      <p class="absolute bottom-2 left-4 text-slate-950 font-bold capitalize">{{name}}</p>
+    </div>
+    <span class="self-end">R$ {{price.toFixed(2)}}</span>
+    <button mat-flat-button color="primary" routerLink="burguer"
+    [queryParams]="{ id: id }">Pedir</button>
+    <button mat-button color="accent" (click)="handleIngredients()">Ingredientes +</button>
+    <ul *ngIf="openIngredients" class="flex flex-wrap justify-center gap-1 transition-all">
+        <li *ngFor="let ing of ingredients">
+            <mat-chip><span class="text-sm">{{ing}}</span></mat-chip>
+        </li>
+    </ul>
+</div>

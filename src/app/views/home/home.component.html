@@ -1,0 +1,89 @@
+<main class="min-h-screen w-full container mx-auto p-4 flex flex-col sm:flex-row gap-4">
+  <aside class="w-full sm:w-min rounded-xl bg-slate-950 p-4 flex flex-col gap-2">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="relative">
+      <mat-form-field class="w-full">
+        <input name="burgerName" placeholder="X-Salada" matInput ngModel required #burgerName="ngModel" />
+      </mat-form-field>
+      <button class="absolute top-4 right-2"><img class="w-6" src="../../../assets/search.svg" alt="search" /></button>
+    </form>
+
+    <mat-chip-listbox aria-label="carnes" class="w-full p-2 outline rounded-xl ">
+      <mat-label class="ml-2 font-bold">Carnes</mat-label>
+      <mat-chip-option *ngFor="let ing of carneList" (click)="choseIng(ing)">
+        {{ing}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <mat-chip-listbox aria-label="molhos" class="w-full p-2 outline rounded-xl ">
+      <mat-label class="ml-2 font-bold">Molhos</mat-label>
+      <mat-chip-option *ngFor="let ing of molhoList" (click)="choseIng(ing)">
+        {{ing}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <mat-chip-listbox aria-label="paes" class="w-full p-2 outline rounded-xl ">
+      <mat-label class="ml-2 font-bold">Paes</mat-label>
+      <mat-chip-option *ngFor="let ing of paesList" (click)="choseIng(ing)">
+        {{ing}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <mat-chip-listbox aria-label="acompanhamentos" class="w-full p-2 outline rounded-xl ">
+      <mat-label class="ml-2 font-bold">Acompanhamentos</mat-label>
+      <mat-chip-option *ngFor="let ing of acompanhamentoList" (click)="choseIng(ing)">
+        {{ing}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <mat-chip-listbox aria-label="salada" class="w-full p-2 outline rounded-xl ">
+      <mat-label class="ml-2 font-bold">Saladas</mat-label>
+      <mat-chip-option *ngFor="let ing of saladaList" (click)="choseIng(ing)">
+        {{ing}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+
+    <mat-chip-listbox aria-label="queijos" class="w-full p-2 outline rounded-xl ">
+      <mat-label class="ml-2 font-bold">Queijos</mat-label>
+      <mat-chip-option *ngFor="let ing of queijoList" (click)="choseIng(ing)">
+        {{ing}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+  </aside>
+
+  <section
+    class="w-full h-min p-4 gap-4 rounded-xl bg-slate-950 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <app-burger class="h-fit" *ngFor="let burger of burgers" [id]="burger.id"
+      [name]="burger.name" [price]="burger.price" [ingredients]="burger.ingredients"></app-burger>
+
+    <div *ngIf="burgers.length == 0 && loaded" class="grid col-span-full gap-2 justify-center items-center">
+      <img src="../../../assets/not found.png" alt="not found">
+      <span class="text-center font-bold text-lg">Hamburguer não encotrado</span>
+    </div>
+
+
+    <div *ngIf="!loaded" class="p-4 flex flex-col bg-slate-800 rounded-xl h-fit transition-all">
+      <ngx-skeleton-loader [theme]="{height: '10rem'}" animation="pulse" />
+      <ngx-skeleton-loader [theme]="{width: '50%'}" animation="pulse" />
+      <ngx-skeleton-loader animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+    </div>
+    <div *ngIf="!loaded" class="p-4 flex flex-col bg-slate-800 rounded-xl h-fit transition-all">
+      <ngx-skeleton-loader [theme]="{height: '10rem'}" animation="pulse" />
+      <ngx-skeleton-loader [theme]="{width: '50%'}" animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+    </div>
+    <div *ngIf="!loaded" class="p-4 flex flex-col bg-slate-800 rounded-xl h-fit transition-all">
+      <ngx-skeleton-loader [theme]="{height: '10rem'}" animation="pulse" />
+      <ngx-skeleton-loader [theme]="{width: '50%'}" animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+    </div>
+    <div *ngIf="!loaded" class="p-4 flex flex-col bg-slate-800 rounded-xl h-fit transition-all">
+      <ngx-skeleton-loader [theme]="{height: '10rem'}" animation="pulse" />
+      <ngx-skeleton-loader [theme]="{width: '50%'}" animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+      <ngx-skeleton-loader animation="pulse"/>
+    </div>
+  </section>
+</main>

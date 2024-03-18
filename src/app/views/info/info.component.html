@@ -1,0 +1,84 @@
+<main class="min-h-screen w-full container mx-auto p-4 flex flex-col gap-4">
+    <section *ngIf="showAlert" class="p-4 rounded-xl bg-sky-600 flex items-center gap-4">
+        <img src="../../../assets/success.svg" alt="success">
+
+        <p class="text-xl font-bold">{{alertText}}</p>
+    </section>
+
+    <section *ngIf="info" class="w-full h-min p-4 gap-4 rounded-xl bg-slate-950 grid grid-cols-3">
+        <img class="bg-slate-900 rounded-xl" src="../assets/burger.svg" :alt="info.name">
+        <div class="col-span-2 grid grid-cols-1 gap-4 justify-between">
+            <h2 class="text-6xl font-bold h-min capitalize">{{info.name}}</h2>
+            <ul class="flex gap-2 flex-wrap items-center h-min">
+                <li class="rounded-full bg-amber-400 px-4 w-min h-min text-center whitespace-nowrap text-slate-900"
+                    *ngFor="let ing of info.ingredients">
+                    {{ing}}
+                </li>
+            </ul>
+            <div class="flex gap-4 items-center">
+                <p class="text-2xl">R$ {{price}}</p>
+                <img class="w-8" matTooltip="Pagamento de dinheiro" src="../../../assets/money.svg" alt="money">
+                <img class="w-8" matTooltip="Cartão Visas" src="../../../assets/visa.svg" alt="visa">
+                <img class="w-8" matTooltip="Cartão MasterCard" src="../../../assets/mastercard.svg" alt="mastercard">
+                <img class="w-8" matTooltip="Pix" src="../../../assets/pix.svg" alt="pix">
+            </div>
+
+            <div aria-label="carnes" class="w-full p-2 outline rounded-lg grid gap-4">
+                <label class="ml-2 font-bold text-center text-xl">Opções de pedido</label>
+                <div class="flex justify-center gap-4">
+                    <button mat-raised-button (click)="buy()" color="accent" class="w-full text-xl text-center">
+                        Retirar no local
+                    </button>
+                    <button mat-raised-button (click)="buy('distancia')" color="primary"
+                        class="w-full text-xl text-center">
+                        Entrega a domicilio
+                    </button>
+                </div>
+            </div>
+
+            <span *ngIf="showAlert && !entrega">Rua Carlos Augusto Cornelsen, 100, Bom Retiro, Curitiba</span>
+
+            <form *ngIf="entrega && infoEntrega" (ngSubmit)="buyEntrega($event)" class="grid bg-slate-900 p-4 rounded-xl">
+                <label class="text-xl font-bold mb-4">Informações do endereço</label>
+                <mat-form-field>
+                    <mat-label>Bairro</mat-label>
+                    <input matInput maxlength="30" [formControl]="inputControl" placeholder="Ex. Santo Amaro">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Rua</mat-label>
+                    <input matInput maxlength="50" [formControl]="inputControl" placeholder="Ex. 13 de maio">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Número</mat-label>
+                    <input type="number" maxlength="5" matInput [formControl]="inputControl" placeholder="Ex. 25">
+                </mat-form-field>
+                <button mat-raised-button color="accent">Pedir!</button>
+            </form>
+        </div>
+    </section>
+
+    <section *ngIf="!info" class="w-full h-min p-4 gap-4 rounded-xl bg-slate-950 grid grid-cols-3">
+        <div class="bg-slate-900 rounded-xl h-80">
+            <ngx-skeleton-loader [theme]="{height: '100%'}" animation="pulse" />
+        </div>
+        <div class="col-span-2 grid gap-4 h-min">
+            <ngx-skeleton-loader animation="pulse" class="text-6xl font-bold h-min" />
+            <ngx-skeleton-loader count="5" appearance="circle" animation="pulse"
+                class="flex gap-2 flex-wrap items-center h-min"></ngx-skeleton-loader>
+            <ngx-skeleton-loader animation="pulse" class="text-2xl"></ngx-skeleton-loader>
+
+            <div aria-label="carnes" class="w-full p-2 rounded-lg grid gap-4">
+                <ngx-skeleton-loader animation="pulse" class="ml-2 font-bold text-center">Opções de
+                    pedido</ngx-skeleton-loader>
+                <div class="flex justify-center gap-4">
+                    <ngx-skeleton-loader animation="pulse" class="w-[45%]">
+                        Retirar no local
+                    </ngx-skeleton-loader>
+                    <ngx-skeleton-loader animation="pulse" class="w-[45%]">
+                        Entrega a domicilio
+                    </ngx-skeleton-loader>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
